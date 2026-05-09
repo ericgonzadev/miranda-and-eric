@@ -154,7 +154,7 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: url('img/Header.JPG') center center / cover no-repeat;
+  background: url('img/header.jpg') center center / cover no-repeat;
   overflow: hidden;
 }
 
@@ -804,7 +804,7 @@ h1, h2, h3 {
   }
 
   .google-form-wrapper iframe {
-    height: 1500px;
+    height: 1600px;
   }
 }
 
