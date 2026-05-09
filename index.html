@@ -76,10 +76,31 @@
     <div class="rsvp-overlay"></div>
     <div class="container">
       <h2 class="section-title light reveal">We Can't Wait to See You!</h2>
+
+      <div class="rsvp-info reveal">
+        <div class="rsvp-info-block">
+          <h3 class="rsvp-info-label">Event Date</h3>
+          <p class="rsvp-info-value">June 27, 2026</p>
+        </div>
+        <div class="rsvp-info-block">
+          <h3 class="rsvp-info-label">Event Address</h3>
+          <p class="rsvp-info-value">
+            <a href="https://www.google.com/maps/search/?api=1&query=3927+S+Hill+St+Los+Angeles+CA+90037" target="_blank" rel="noopener">3927 S Hill St.<br>Los Angeles, CA 90037</a>
+          </p>
+        </div>
+        <div class="rsvp-info-block">
+          <h3 class="rsvp-info-label">Contact</h3>
+          <p class="rsvp-info-value">
+            Eric &mdash; <a href="tel:+14154906568">(415) 490-6568</a><br>
+            Miranda &mdash; <a href="tel:+15626406552">(562) 640-6552</a>
+          </p>
+        </div>
+      </div>
+
       <p class="section-subtitle light reveal">Please let us know if you can make it</p>
 
       <div class="google-form-wrapper reveal">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSePCThbTdetcz-QxlcRPEOhAfChoqmTMoPw6yxdpQ0OLKzPEA/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0" title="RSVP Form">Loading…</iframe>
+        <iframe data-tally-src="https://tally.so/embed/1ADrj1?alignLeft=1&dynamicHeight=1" loading="lazy" width="100%" height="284" frameborder="0" marginheight="0" marginwidth="0" title="RSVP Form">Loading…</iframe>
       </div>
     </div>
   </section>
@@ -168,5 +189,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src=\"'+w+'\"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s)}</script>
 </body>
 </html>
