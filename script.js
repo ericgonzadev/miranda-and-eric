@@ -2,15 +2,25 @@
 (function () {
   const weddingDate = new Date('2026-06-27T16:00:00').getTime();
 
+  function setDigit(id, value) {
+    const el = document.getElementById(id);
+    if (!el || el.textContent === value) return;
+    el.textContent = value;
+    el.classList.remove('tick');
+    // Force reflow so the animation restarts even when the same class is re-added quickly.
+    void el.offsetWidth;
+    el.classList.add('tick');
+  }
+
   function updateCountdown() {
     const now = Date.now();
     const diff = weddingDate - now;
 
     if (diff <= 0) {
-      document.getElementById('days').textContent = '0';
-      document.getElementById('hours').textContent = '0';
-      document.getElementById('minutes').textContent = '0';
-      document.getElementById('seconds').textContent = '0';
+      setDigit('days', '0');
+      setDigit('hours', '0');
+      setDigit('minutes', '0');
+      setDigit('seconds', '0');
       return;
     }
 
@@ -19,10 +29,10 @@
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    document.getElementById('days').textContent = days;
-    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    setDigit('days', String(days));
+    setDigit('hours', String(hours).padStart(2, '0'));
+    setDigit('minutes', String(minutes).padStart(2, '0'));
+    setDigit('seconds', String(seconds).padStart(2, '0'));
   }
 
   updateCountdown();
@@ -53,8 +63,9 @@
   const nav = document.getElementById('mainNav');
 
   hamburger.addEventListener('click', function () {
-    hamburger.classList.toggle('active');
-    nav.classList.toggle('open');
+    const isOpen = nav.classList.toggle('open');
+    hamburger.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
   });
 
   // Close menu when clicking a nav link
@@ -62,6 +73,7 @@
     link.addEventListener('click', function () {
       hamburger.classList.remove('active');
       nav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
     });
   });
 })();
@@ -118,29 +130,5 @@
         window.scrollTo({ top: targetPosition, behavior: 'smooth' });
       }
     });
-  });
-})();
-
-// ===== RSVP Form =====
-(function () {
-  const form = document.getElementById('rsvpForm');
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const name = document.getElementById('guestName').value;
-    const btn = form.querySelector('.btn-light');
-    const originalText = btn.textContent;
-
-    btn.textContent = 'Thank you, ' + name + '!';
-    btn.style.background = 'rgba(255,255,255,0.2)';
-    btn.disabled = true;
-
-    setTimeout(function () {
-      form.reset();
-      btn.textContent = originalText;
-      btn.style.background = '';
-      btn.disabled = false;
-    }, 3000);
   });
 })();
