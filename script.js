@@ -96,28 +96,6 @@
   window.addEventListener('scroll', checkReveal, { passive: true });
 })();
 
-// ===== FAQ Accordion =====
-(function () {
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(function (item) {
-    const question = item.querySelector('.faq-question');
-    question.addEventListener('click', function () {
-      const isActive = item.classList.contains('active');
-
-      // Close all
-      faqItems.forEach(function (i) {
-        i.classList.remove('active');
-      });
-
-      // Toggle current
-      if (!isActive) {
-        item.classList.add('active');
-      }
-    });
-  });
-})();
-
 // ===== Smooth Scroll for Nav Links =====
 (function () {
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
