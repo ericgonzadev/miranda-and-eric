@@ -516,6 +516,10 @@ h1, h2, h3 {
 }
 
 /* ===== FAQ ===== */
+.faq {
+  padding-top: 56px;
+}
+
 .faq-list {
   max-width: 700px;
   margin: 0 auto;
