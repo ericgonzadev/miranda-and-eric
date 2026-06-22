@@ -517,7 +517,7 @@ h1, h2, h3 {
 
 /* ===== FAQ ===== */
 .faq {
-  padding-top: 56px;
+  padding-top: 40px;
 }
 
 .faq-list {
@@ -786,6 +786,10 @@ h1, h2, h3 {
 
   .section {
     padding: 80px 0;
+  }
+
+  .faq {
+    padding-top: 24px;
   }
 
   .rsvp-info {
