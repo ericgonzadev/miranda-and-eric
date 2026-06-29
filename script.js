@@ -110,3 +110,58 @@
     });
   });
 })();
+
+// ===== Engagement Photos Carousel =====
+(function () {
+  const track = document.getElementById('carouselTrack');
+  if (!track) return;
+
+  const slides = Array.from(track.children);
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
+  const dotsWrap = document.getElementById('carouselDots');
+  let index = 0;
+
+  // Build dot indicators
+  const dots = slides.map(function (_, i) {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+    dot.addEventListener('click', function () { goTo(i); });
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+
+  function goTo(i) {
+    index = (i + slides.length) % slides.length;
+    track.style.transform = 'translateX(' + (-index * 100) + '%)';
+    dots.forEach(function (d, di) { d.classList.toggle('active', di === index); });
+  }
+
+  prevBtn.addEventListener('click', function () { goTo(index - 1); });
+  nextBtn.addEventListener('click', function () { goTo(index + 1); });
+
+  // Keyboard navigation when carousel is focused/hovered
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') goTo(index - 1);
+    else if (e.key === 'ArrowRight') goTo(index + 1);
+  });
+
+  // Touch swipe support
+  let startX = 0;
+  let dragging = false;
+
+  track.addEventListener('touchstart', function (e) {
+    startX = e.touches[0].clientX;
+    dragging = true;
+  }, { passive: true });
+
+  track.addEventListener('touchend', function (e) {
+    if (!dragging) return;
+    dragging = false;
+    const delta = e.changedTouches[0].clientX - startX;
+    if (Math.abs(delta) > 40) {
+      goTo(delta < 0 ? index + 1 : index - 1);
+    }
+  }, { passive: true });
+})();
