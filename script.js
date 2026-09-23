@@ -1,6 +1,6 @@
 // ===== Countdown Timer =====
 (function () {
-  const weddingDate = new Date('2026-06-27T16:00:00').getTime();
+  const weddingDate = new Date('2027-04-02T16:00:00').getTime();
 
   function setDigit(id, value) {
     const el = document.getElementById(id);

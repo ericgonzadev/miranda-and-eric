@@ -154,11 +154,18 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: url('img/header.jpg') center center / cover no-repeat;
+  background: url('img/header.jpg') center bottom / cover no-repeat;
   background-image: image-set(
     url('img/header.webp') type('image/webp'),
     url('img/header.jpg') type('image/jpeg')
   );
+  /* Desktop framing for this photo: couple centered, tops of heads ~75px below the 73px nav
+     on a 900px-tall screen. The zoom (2.414 = photo width/height ÷ share of the photo below
+     their heads) puts heads 20px under the nav, then the 0.068 term pans down from there.
+     0.0165 shifts them from 49.3% across to dead center. Mobile resets to cover.
+     Retune if the photo changes. */
+  background-size: max(100%, (100vh - 93px) * 2.414) auto;
+  background-position: calc(50% + (100vh - 93px) * 0.0165) calc(100% + (100vh - 93px) * 0.068);
   overflow: hidden;
 }
 
@@ -673,6 +680,10 @@ h1, h2, h3 {
 }
 
 /* ===== Engagement Photos Carousel ===== */
+.section.gallery {
+  background: #000;
+}
+
 .carousel {
   display: flex;
   align-items: center;
@@ -893,6 +904,11 @@ h1, h2, h3 {
 
   .countdown-number {
     font-size: 2rem;
+  }
+
+  .hero {
+    background-size: cover;
+    background-position: center bottom;
   }
 
   .section {
