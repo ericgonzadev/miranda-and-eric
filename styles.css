@@ -681,7 +681,7 @@ h1, h2, h3 {
 
 /* ===== Engagement Photos Carousel ===== */
 .section.gallery {
-  background: #000;
+  background: var(--white);
 }
 
 .carousel {
@@ -784,7 +784,7 @@ h1, h2, h3 {
 
 /* ===== More Details ===== */
 .section.details {
-  background: var(--white);
+  background: #000;
   text-align: center;
 }
 
@@ -806,7 +806,7 @@ h1, h2, h3 {
   font-family: var(--font-serif);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-style: italic;
-  color: var(--text-dark);
+  color: var(--white);
 }
 
 /* ===== Official Playlist ===== */
