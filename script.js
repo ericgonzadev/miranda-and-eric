@@ -1,5 +1,7 @@
 // ===== Countdown Timer =====
 (function () {
+  if (!document.getElementById('countdown')) return;
+
   const weddingDate = new Date('2027-04-02T16:00:00').getTime();
 
   function setDigit(id, value) {
@@ -42,18 +44,13 @@
 // ===== Header Scroll Effect =====
 (function () {
   const header = document.getElementById('header');
-  let lastScroll = 0;
 
   window.addEventListener('scroll', function () {
-    const currentScroll = window.scrollY;
-
-    if (currentScroll > 50) {
+    if (window.scrollY > 50) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
-
-    lastScroll = currentScroll;
   }, { passive: true });
 })();
 
@@ -80,20 +77,27 @@
 
 // ===== Scroll Reveal =====
 (function () {
-  const reveals = document.querySelectorAll('.reveal');
+  const reveals = Array.from(document.querySelectorAll('.reveal'));
 
-  function checkReveal() {
-    const windowHeight = window.innerHeight;
-    reveals.forEach(function (el) {
-      const top = el.getBoundingClientRect().top;
-      if (top < windowHeight - 80) {
-        el.classList.add('visible');
-      }
-    });
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('visible'); });
+    return;
   }
 
-  checkReveal();
-  window.addEventListener('scroll', checkReveal, { passive: true });
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting && entry.boundingClientRect.top >= 0) return;
+      // Reveal this element and everything above it, so sections skipped by an
+      // instant jump (reload, End key, #anchor) don't stay hidden.
+      const last = reveals.indexOf(entry.target);
+      for (let i = 0; i <= last; i++) {
+        reveals[i].classList.add('visible');
+        observer.unobserve(reveals[i]);
+      }
+    });
+  }, { rootMargin: '0px 0px -80px 0px' });
+
+  reveals.forEach(function (el) { observer.observe(el); });
 })();
 
 // ===== Smooth Scroll for Nav Links =====
@@ -132,17 +136,46 @@
     return dot;
   });
 
+  // Switch a slide's photo from lazy to eager so it downloads before it's shown.
+  function warm(i) {
+    const img = slides[(i + slides.length) % slides.length].querySelector('img');
+    if (img && img.loading === 'lazy') img.loading = 'eager';
+  }
+
   function goTo(i) {
     index = (i + slides.length) % slides.length;
     track.style.transform = 'translateX(' + (-index * 100) + '%)';
     dots.forEach(function (d, di) { d.classList.toggle('active', di === index); });
+    warm(index);
+    warm(index + 1);
+    warm(index - 1);
   }
 
   prevBtn.addEventListener('click', function () { goTo(index - 1); });
   nextBtn.addEventListener('click', function () { goTo(index + 1); });
 
-  // Keyboard navigation when carousel is focused/hovered
+  // Load the first two photos just before the carousel scrolls into view, and
+  // only let the arrow keys drive the carousel while it's on screen.
+  const carousel = document.getElementById('carousel');
+  let onScreen = true;
+  if ('IntersectionObserver' in window) {
+    onScreen = false;
+    const warmObserver = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        warm(index);
+        warm(index + 1);
+        warmObserver.disconnect();
+      }
+    }, { rootMargin: '0px 0px 300px 0px' });
+    warmObserver.observe(carousel);
+
+    new IntersectionObserver(function (entries) {
+      onScreen = entries[0].isIntersecting;
+    }).observe(carousel);
+  }
+
   document.addEventListener('keydown', function (e) {
+    if (!onScreen || e.target.closest('input, textarea, select, [contenteditable]')) return;
     if (e.key === 'ArrowLeft') goTo(index - 1);
     else if (e.key === 'ArrowRight') goTo(index + 1);
   });

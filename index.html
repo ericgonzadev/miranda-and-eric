@@ -35,10 +35,10 @@
   <meta name="twitter:image" content="https://www.mirandaanderic.com/img/meta-image-wedding.jpg?v=2">
   <meta name="twitter:image:alt" content="Miranda & Eric — Wedding Ceremony and Reception, Friday - April 2nd, 2027">
 
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="preload" as="image" href="img/header.webp" fetchpriority="high">
+  <link rel="preload" as="font" href="fonts/cormorant-garamond-latin.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="fonts/montserrat-latin.woff2" type="font/woff2" crossorigin>
 </head>
 <body>
 
@@ -123,6 +123,7 @@
         <iframe data-tally-src="https://tally.so/embed/1ADrj1?alignLeft=1&dynamicHeight=1" loading="lazy" width="100%" height="284" frameborder="0" marginheight="0" marginwidth="0" title="RSVP Form">Loading…</iframe>
       </div>
     </div>
+    <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src=\"'+w+'\"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s)}</script>
   </section>
   -->
 
@@ -197,20 +198,21 @@
         <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Previous photo">&#8249;</button>
         <div class="carousel-viewport">
           <div class="carousel-track" id="carouselTrack">
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI23419.webp"><img src="img/engagement-photos/web/ALI23419.jpg" alt="Miranda &amp; Eric engagement photo 1" loading="eager"></picture></div>
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI23453.webp"><img src="img/engagement-photos/web/ALI23453.jpg" alt="Miranda &amp; Eric engagement photo 2" loading="lazy"></picture></div>
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI23483.webp"><img src="img/engagement-photos/web/ALI23483.jpg" alt="Miranda &amp; Eric engagement photo 3" loading="lazy"></picture></div>
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI23754.webp"><img src="img/engagement-photos/web/ALI23754.jpg" alt="Miranda &amp; Eric engagement photo 4" loading="lazy"></picture></div>
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI23808.webp"><img src="img/engagement-photos/web/ALI23808.jpg" alt="Miranda &amp; Eric engagement photo 5" loading="lazy"></picture></div>
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI23909.webp"><img src="img/engagement-photos/web/ALI23909.jpg" alt="Miranda &amp; Eric engagement photo 6" loading="lazy"></picture></div>
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24012.webp"><img src="img/engagement-photos/web/ALI24012.jpg" alt="Miranda &amp; Eric engagement photo 7" loading="lazy"></picture></div>
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24038.webp"><img src="img/engagement-photos/web/ALI24038.jpg" alt="Miranda &amp; Eric engagement photo 8" loading="lazy"></picture></div>
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24073.webp"><img src="img/engagement-photos/web/ALI24073.jpg" alt="Miranda &amp; Eric engagement photo 9" loading="lazy"></picture></div>
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24123.webp"><img src="img/engagement-photos/web/ALI24123.jpg" alt="Miranda &amp; Eric engagement photo 10" loading="lazy"></picture></div>
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24231.webp"><img src="img/engagement-photos/web/ALI24231.jpg" alt="Miranda &amp; Eric engagement photo 11" loading="lazy"></picture></div>
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24325.webp"><img src="img/engagement-photos/web/ALI24325.jpg" alt="Miranda &amp; Eric engagement photo 12" loading="lazy"></picture></div>
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24344.webp"><img src="img/engagement-photos/web/ALI24344.jpg" alt="Miranda &amp; Eric engagement photo 13" loading="lazy"></picture></div>
-            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALIN0483.webp"><img src="img/engagement-photos/web/ALIN0483.jpg" alt="Miranda &amp; Eric engagement photo 14" loading="lazy"></picture></div>          </div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI23419-640.webp 640w, img/engagement-photos/web/ALI23419-960.webp 960w, img/engagement-photos/web/ALI23419.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALI23419.jpg" alt="Miranda &amp; Eric engagement photo 1" loading="lazy"></picture></div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI23453-640.webp 640w, img/engagement-photos/web/ALI23453-960.webp 960w, img/engagement-photos/web/ALI23453.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALI23453.jpg" alt="Miranda &amp; Eric engagement photo 2" loading="lazy"></picture></div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI23483-640.webp 640w, img/engagement-photos/web/ALI23483-960.webp 960w, img/engagement-photos/web/ALI23483.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALI23483.jpg" alt="Miranda &amp; Eric engagement photo 3" loading="lazy"></picture></div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI23754-640.webp 640w, img/engagement-photos/web/ALI23754-960.webp 960w, img/engagement-photos/web/ALI23754.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALI23754.jpg" alt="Miranda &amp; Eric engagement photo 4" loading="lazy"></picture></div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI23808-640.webp 640w, img/engagement-photos/web/ALI23808-960.webp 960w, img/engagement-photos/web/ALI23808.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALI23808.jpg" alt="Miranda &amp; Eric engagement photo 5" loading="lazy"></picture></div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI23909-640.webp 640w, img/engagement-photos/web/ALI23909-960.webp 960w, img/engagement-photos/web/ALI23909.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALI23909.jpg" alt="Miranda &amp; Eric engagement photo 6" loading="lazy"></picture></div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24012-640.webp 640w, img/engagement-photos/web/ALI24012-960.webp 960w, img/engagement-photos/web/ALI24012.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALI24012.jpg" alt="Miranda &amp; Eric engagement photo 7" loading="lazy"></picture></div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24038-640.webp 640w, img/engagement-photos/web/ALI24038-960.webp 960w, img/engagement-photos/web/ALI24038.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALI24038.jpg" alt="Miranda &amp; Eric engagement photo 8" loading="lazy"></picture></div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24073-640.webp 640w, img/engagement-photos/web/ALI24073-960.webp 960w, img/engagement-photos/web/ALI24073.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALI24073.jpg" alt="Miranda &amp; Eric engagement photo 9" loading="lazy"></picture></div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24123-640.webp 640w, img/engagement-photos/web/ALI24123-960.webp 960w, img/engagement-photos/web/ALI24123.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALI24123.jpg" alt="Miranda &amp; Eric engagement photo 10" loading="lazy"></picture></div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24231-640.webp 640w, img/engagement-photos/web/ALI24231-960.webp 960w, img/engagement-photos/web/ALI24231.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALI24231.jpg" alt="Miranda &amp; Eric engagement photo 11" loading="lazy"></picture></div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24325-640.webp 640w, img/engagement-photos/web/ALI24325-960.webp 960w, img/engagement-photos/web/ALI24325.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALI24325.jpg" alt="Miranda &amp; Eric engagement photo 12" loading="lazy"></picture></div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALI24344-640.webp 640w, img/engagement-photos/web/ALI24344-960.webp 960w, img/engagement-photos/web/ALI24344.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALI24344.jpg" alt="Miranda &amp; Eric engagement photo 13" loading="lazy"></picture></div>
+            <div class="carousel-slide"><picture><source type="image/webp" srcset="img/engagement-photos/web/ALIN0483-640.webp 640w, img/engagement-photos/web/ALIN0483-960.webp 960w, img/engagement-photos/web/ALIN0483.webp 1200w" sizes="(max-width: 500px) 72vw, (max-width: 900px) 360px, 420px"><img src="img/engagement-photos/web/ALIN0483.jpg" alt="Miranda &amp; Eric engagement photo 14" loading="lazy"></picture></div>
+          </div>
         </div>
         <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Next photo">&#8250;</button>
       </div>
@@ -238,7 +240,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
-  <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src=\"'+w+'\"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s)}</script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>
