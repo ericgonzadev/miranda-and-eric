@@ -136,10 +136,21 @@
     return dot;
   });
 
-  // Switch a slide's photo from lazy to eager so it downloads before it's shown.
+  // Slide photos ship with data-srcset/data-src so nothing downloads with the page
+  // (competing with the header photo). Fill them in just before a slide is needed.
+  // The <source> goes first so the browser picks the right WebP size, not the JPG.
   function warm(i) {
-    const img = slides[(i + slides.length) % slides.length].querySelector('img');
-    if (img && img.loading === 'lazy') img.loading = 'eager';
+    const slide = slides[(i + slides.length) % slides.length];
+    const source = slide.querySelector('source[data-srcset]');
+    const img = slide.querySelector('img[data-src]');
+    if (source) {
+      source.srcset = source.dataset.srcset;
+      source.removeAttribute('data-srcset');
+    }
+    if (img) {
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
+    }
   }
 
   function goTo(i) {
@@ -154,8 +165,9 @@
   prevBtn.addEventListener('click', function () { goTo(index - 1); });
   nextBtn.addEventListener('click', function () { goTo(index + 1); });
 
-  // Load the first two photos just before the carousel scrolls into view, and
-  // only let the arrow keys drive the carousel while it's on screen.
+  // Load the first two photos once the carousel is within ~600px of the screen
+  // (never on first load), and only let the arrow keys drive the carousel while
+  // it's on screen.
   const carousel = document.getElementById('carousel');
   let onScreen = true;
   if ('IntersectionObserver' in window) {
@@ -166,12 +178,15 @@
         warm(index + 1);
         warmObserver.disconnect();
       }
-    }, { rootMargin: '0px 0px 300px 0px' });
+    }, { rootMargin: '0px 0px 600px 0px' });
     warmObserver.observe(carousel);
 
     new IntersectionObserver(function (entries) {
       onScreen = entries[0].isIntersecting;
     }).observe(carousel);
+  } else {
+    warm(index);
+    warm(index + 1);
   }
 
   document.addEventListener('keydown', function (e) {
